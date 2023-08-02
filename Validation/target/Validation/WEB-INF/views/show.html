@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Person</title>
+
+
+  <style>
+
+    div.state {
+      margin: 100px 300px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    div.state:hover {
+        border: rgba(25,37,27,0.98);
+        background-color: rgba(37,32,30,0.02)
+    }
+
+    div.into {
+      margin: 10px;
+      padding: 10px;
+      background-color: rgba(255,188,100,0.1);
+    }
+
+    div.into_info {
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+    div.into_info:hover {
+        background-color: rgba(80,255,61,0.25);
+    }
+
+    input[type=submit]{
+        background-color: rgba(255,28,65,0.98);
+        color: #1c1c28;
+    }
+
+    a.edit {
+        margin: 10px;
+        width: 30%;
+        background-color: white;
+        border: rgba(36,66,255,0.98) 1px solid;
+        color: blue;
+        height: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="state">
+  <h3>User Details</h3>
+
+  <div class="into">
+
+    <p th:text=" 'Details if user id' + ': ' + ${student.getId()}"></p>
+
+      <div class="into_info">
+          <strong>Name: <p th:text="'  ' + ${student.getName()}"></p></strong><br/>
+          <strong>GPA: <p th:text="'  ' + ${student.getGpa()}"></p></strong><br/>
+          <strong>Email: <p th:text="'  ' + ${student.getEmail()}"></p></strong><br/>
+          <form th:method="DELETE" th:action="@{/all/{id_db} (id_db = ${student.getId_db()})}">
+              <input type="submit" value="Delete !">
+          </form>
+          <a class="edit" th:href="@{/all/{id_db}/edit (id_db = ${student.getId_db()})}"> Edit !</a>
+
+      </div>
+  </div>
+</div>
+</body>
+</html>

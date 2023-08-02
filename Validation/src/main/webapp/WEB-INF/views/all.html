@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Students</title>
+    <style>
+        div.my {
+            text-align: center;
+            margin: 20px 150px;
+            width: 70%;
+        }
+
+        div.qw {
+            padding: 5px;
+            background-color: white;
+            height: 40px;
+        }
+
+        div.qw:nth-child(odd):hover {
+            background-color: rgba(234,255,253,0);
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center">List of Students</h2>
+
+<div class="my">
+
+    <div th:each="x : ${list}">
+        <div class="qw">
+            <a th:href="@{/all/{id_db} (id_db = ${x.getId_db()})}" th:text="${x.getName()} + ', ' + ${x.getEmail()} + ', ' + ${x.getId()} + ', ' + ${x.getGpa()}"></a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
